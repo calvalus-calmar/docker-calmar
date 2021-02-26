@@ -2,7 +2,7 @@ version: '3'
 
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    image: calvaluscalmar/hadoop-namenode:master
     networks:
       - hbase
     volumes:
@@ -18,13 +18,13 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.hostname == akswnc4.aksw.uni-leipzig.de
+          - node.hostname == localhost
       labels:
         traefik.docker.network: hbase
         traefik.port: 50070
 
   datanode:
-    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    image: calvaluscalmar/hadoop-datanode:master
     networks:
       - hbase
     volumes:
@@ -42,7 +42,7 @@ services:
         traefik.port: 50075
 
   resourcemanager:
-    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    image: calvaluscalmar/hadoop-resourcemanager:master
     networks:
       - hbase
     environment:
@@ -56,7 +56,7 @@ services:
         condition: on-failure
       placement:
         constraints:
-          - node.hostname == akswnc4.aksw.uni-leipzig.de
+          - node.hostname == localhost
       labels:
         traefik.docker.network: hbase
         traefik.port: 8088
@@ -64,7 +64,7 @@ services:
       disable: true
 
   nodemanager:
-    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    image: calvaluscalmar/hadoop-nodemanager:master
     networks:
       - hbase
     environment:
@@ -80,11 +80,9 @@ services:
         traefik.port: 8042
 
   historyserver:
-    image: bde2020/hadoop-historyserver:2.0.0-hadoop3.2.1-java8
+    image: calvaluscalmar/hadoop-historyserver:master
     networks:
       - hbase
-    volumes:
-      - hadoop_historyserver:/hadoop/yarn/timeline
     environment:
       SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
     env_file:
@@ -94,7 +92,7 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.hostname == akswnc4.aksw.uni-leipzig.de
+          - node.hostname == localhost
       labels:
         traefik.docker.network: hbase
         traefik.port: 8188
@@ -102,7 +100,6 @@ services:
 volumes:
   datanode:
   namenode:
-  hadoop_historyserver:
 
 networks:
   hbase:

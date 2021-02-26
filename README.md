@@ -1,3 +1,10 @@
+# Hadoop Docker running Calvalus / CalMar
+
+This project builds on the [Hadoop Docker](https://github.com/big-data-europe/docker-hadoop "Hadoop Docker") and [Calvalus](https://github.com/bcdev/calvalus2 "Calvalus") projects.
+It deploys Calvalus on Hadoop Docker for the CalMar project.
+The overall [CalMar project](https://github.com/calvalus-calmar "CalMar project") aims to demonstrate the processing and use of ocean satellite data products for use by the Marine Renewable Energy (MRE) sector.
+CalMar is funded by the Science Foundation Ireland (SFI) project in collobration with [MaREI](https://www.marei.ie/ "MaREI") and [Brockmann Consult](https://www.brockmann-consult.de/ "Brockmann Consult").
+
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/big-data-europe/Lobby)
 
 # Changes

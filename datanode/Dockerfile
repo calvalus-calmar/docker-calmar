@@ -1,6 +1,5 @@
-FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
-
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+# This script is based on https://github.com/big-data-europe/docker-hadoop
+FROM calvaluscalmar/hadoop-base:master
 
 HEALTHCHECK CMD curl -f http://localhost:9864/ || exit 1
 

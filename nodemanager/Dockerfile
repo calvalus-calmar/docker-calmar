@@ -1,6 +1,14 @@
-FROM bde2020/hadoop-base:2.0.0-hadoop3.2.1-java8
+# This script is based on https://github.com/big-data-europe/docker-hadoop
+FROM calvaluscalmar/hadoop-base:master
 
-MAINTAINER Ivan Ermilov <ivan.s.ermilov@gmail.com>
+# install libproj (required to support minimum GDAL)
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+      libproj19 \
+    && rm -rf /var/lib/apt/lists/*
+
+# install GDAL to Native Hadoop Library directory
+COPY --from=calvaluscalmar/calvalus-base:master /build/usr/lib/libgdalalljni.so /opt/hadoop-$HADOOP_VERSION/lib/native/
+COPY --from=calvaluscalmar/calvalus-base:master /build/usr/lib/libgdal.so /opt/hadoop-$HADOOP_VERSION/lib/native/
 
 HEALTHCHECK CMD curl -f http://localhost:8042/ || exit 1
 

@@ -1,6 +1,5 @@
+# This script is based on https://github.com/big-data-europe/docker-hadoop
 FROM nginx
-
-MAINTAINER "Ivan Ermilov <mailto:ivan.s.ermilov@gmail.com>"
 
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY materialize.min.css /data/bde-css/materialize.min.css
