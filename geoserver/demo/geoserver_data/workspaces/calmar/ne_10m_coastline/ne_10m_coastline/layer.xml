@@ -1,0 +1,15 @@
+<layer>
+  <name>ne_10m_coastline</name>
+  <id>LayerInfoImpl-4f91f564:16a2691a676:-7ffa</id>
+  <type>VECTOR</type>
+  <defaultStyle>
+    <id>StyleInfoImpl--a20c08b:16a259b7c08:-7ffc</id>
+  </defaultStyle>
+  <resource class="featureType">
+    <id>FeatureTypeInfoImpl-4f91f564:16a2691a676:-7ffb</id>
+  </resource>
+  <attribution>
+    <logoWidth>0</logoWidth>
+    <logoHeight>0</logoHeight>
+  </attribution>
+</layer>

@@ -1,0 +1,94 @@
+version: "3.8"
+
+services:
+  namenode:
+    image: calvaluscalmar/hadoop-namenode:master
+    container_name: namenode
+    restart: always
+    ports:
+      - 9870:9870
+      - 9000:9000
+    volumes:
+      - hadoop_namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+
+  datanode:
+    image: calvaluscalmar/hadoop-datanode:master
+    container_name: datanode
+    restart: always
+    volumes:
+      - hadoop_datanode:/hadoop/dfs/data
+    environment:
+      SERVICE_PRECONDITION: "namenode:9870"
+    env_file:
+      - ./hadoop.env
+  
+  resourcemanager:
+    image: calvaluscalmar/hadoop-resourcemanager:master
+    container_name: resourcemanager
+    restart: always
+    ports:
+      - 8088:8088
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864"
+    env_file:
+      - ./hadoop.env
+
+  nodemanager1:
+    image: calvaluscalmar/hadoop-nodemanager:master
+    container_name: nodemanager
+    restart: always
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+  
+  historyserver:
+    image: calvaluscalmar/hadoop-historyserver:master
+    container_name: historyserver
+    restart: always
+    ports:
+      - 19888:19888
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+
+  calvalus-portal:
+    image: calvaluscalmar/calvalus-portal:master
+    container_name: calvalus-portal
+    restart: always
+    ports:
+      - 8080:8080
+    volumes:
+      - calvalus_portal_home:/root/
+      - calvalus_portal_tomcat_config:/opt/tomcat/
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+
+  geoserver:
+    image: calvaluscalmar/geoserver:master
+    container_name: geoserver
+    restart: always
+    ports:
+      - 8081:8080
+    volumes:
+      - calvalus_geoserver_home:/root/
+      - calvalus_geoserver_tomcat_config:/opt/tomcat/
+    environment:
+      SERVICE_PRECONDITION: "namenode:9000 namenode:9870 datanode:9864 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+
+volumes:
+  hadoop_namenode:
+  hadoop_datanode:
+  calvalus_portal_home:
+  calvalus_portal_tomcat_config:
+  calvalus_geoserver_home:
+  calvalus_geoserver_tomcat_config:

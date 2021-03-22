@@ -1,0 +1,107 @@
+version: '3'
+
+services:
+  namenode:
+    image: calvaluscalmar/hadoop-namenode:master
+    networks:
+      - hbase
+    volumes:
+      - namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == localhost
+      labels:
+        traefik.docker.network: hbase
+        traefik.port: 50070
+
+  datanode:
+    image: calvaluscalmar/hadoop-datanode:master
+    networks:
+      - hbase
+    volumes:
+      - datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070"
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+      labels:
+        traefik.docker.network: hbase
+        traefik.port: 50075
+
+  resourcemanager:
+    image: calvaluscalmar/hadoop-resourcemanager:master
+    networks:
+      - hbase
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075"
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+          - node.hostname == localhost
+      labels:
+        traefik.docker.network: hbase
+        traefik.port: 8088
+    healthcheck:
+      disable: true
+
+  nodemanager:
+    image: calvaluscalmar/hadoop-nodemanager:master
+    networks:
+      - hbase
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: global
+      restart_policy:
+        condition: on-failure
+      labels:
+        traefik.docker.network: hbase
+        traefik.port: 8042
+
+  historyserver:
+    image: calvaluscalmar/hadoop-historyserver:master
+    networks:
+      - hbase
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 resourcemanager:8088"
+    env_file:
+      - ./hadoop.env
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == localhost
+      labels:
+        traefik.docker.network: hbase
+        traefik.port: 8188
+
+volumes:
+  datanode:
+  namenode:
+
+networks:
+  hbase:
+    external:
+      name: hbase
