@@ -20,7 +20,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 # GDAL (mininum GDAL build)
 # The GDAL part of this script is part based on https://github.com/OSGeo/gdal/blob/master/gdal/docker/ubuntu-full/Dockerfile
-ARG GDAL_VERSION=3.2.0
+ARG GDAL_VERSION=3.3.0
 
 RUN mkdir gdal \
     && wget -q https://github.com/OSGeo/gdal/releases/download/v${GDAL_VERSION}/gdal-${GDAL_VERSION}.tar.gz -O - \
