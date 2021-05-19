@@ -4,7 +4,9 @@ LABEL Description="This image is used to enable shell access to setup and mainta
       Maintainer="Declan Dunne"
 
 # Install prerequisites
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
       libssl1.1 \
       wget \
       build-essential \

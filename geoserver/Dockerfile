@@ -2,6 +2,9 @@ FROM calvaluscalmar/tomcat-base:master
 
 LABEL Description="This image is used to start Geoserver" Maintainer="Declan Dunne"
 
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q
+
 ARG GEOSERVER_VERSION=2.18.2
 ENV GEOSERVER_URL https://downloads.sourceforge.net/project/geoserver/GeoServer/${GEOSERVER_VERSION}/geoserver-${GEOSERVER_VERSION}-war.zip
 

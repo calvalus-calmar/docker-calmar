@@ -2,7 +2,9 @@
 FROM calvaluscalmar/hadoop-base:master
 
 # install libproj (required to support minimum GDAL)
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
       libproj19 \
     && rm -rf /var/lib/apt/lists/*
 

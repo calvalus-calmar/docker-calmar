@@ -1,7 +1,9 @@
 # This script is based on https://github.com/big-data-europe/docker-hadoop
 FROM ubuntu:20.10
 
-RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
       openjdk-8-jdk \
       net-tools \
       curl \
