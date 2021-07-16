@@ -60,7 +60,7 @@ RUN set -x \
     && cd snap \
     && git clone https://github.com/calvalus-calmar/snap-engine.git \
     && cd snap-engine \
-    && git checkout 7.x.calvalus \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests
 
 # Build snap-desktop
@@ -68,7 +68,7 @@ RUN set -x \
     && cd snap \
     && git clone https://github.com/calvalus-calmar/snap-desktop.git \
     && cd snap-desktop \
-    && git checkout 7.x.calvalus \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests
 
 # Build s1tbx
@@ -76,7 +76,7 @@ RUN set -x \
     && cd snap \
     && git clone https://github.com/calvalus-calmar/s1tbx.git \
     && cd s1tbx \
-    && git checkout 7.x.calvalus \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests
 
 # Build s2tbx
@@ -84,30 +84,21 @@ RUN set -x \
     && cd snap \
     && git clone https://github.com/calvalus-calmar/s2tbx.git \
     && cd s2tbx \
-    && git checkout 7.x.calvalus \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests
 
 # Build s3tbx
 RUN set -x \
     && cd snap \
-    && git clone https://github.com/senbox-org/s3tbx.git \
+    && git clone https://github.com/calvalus-calmar/s3tbx.git \
     && cd s3tbx \
-    && git checkout 7.x.calvalus \
-    && mvn clean install -DskipTests
-
-# Build probavbox
-RUN set -x \
-    && cd snap \
-    && git clone https://github.com/calvalus-calmar/probavbox.git \
-    && cd probavbox \
-    && git checkout 7.x.calvalus \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests
 
 # Build calvalus
 RUN set -x \
     && mkdir calvalus \
     && cd calvalus \
-    && ls \
     && git clone https://github.com/calvalus-calmar/calvalus2.git \
     && cd calvalus2 \
     && git checkout calmar-develop \
@@ -144,13 +135,13 @@ RUN set -x \
     && cp -p /snap/snap-engine/snap-python/target/nbm/netbeans/snap/modules/org-esa-snap-snap-python.jar /build/usr/share/java/calvalus/snap-python/ \
     # s1tbx
     && mkdir -p /build/usr/share/java/calvalus/s1tbx/ \
-    && cp -p /snap/s1tbx/s1tbx*/target/s*T.jar /build/usr/share/java/calvalus/s1tbx/ \
+    && cp -p /snap/s1tbx/s1tbx*/target/*[!tests].jar /build/usr/share/java/calvalus/s1tbx/ \
     # s2tbx
     && mkdir -p /build/usr/share/java/calvalus/s2tbx/ \
-    && cp -p /snap/s2tbx/s2tbx*/target/s*T.jar /build/usr/share/java/calvalus/s2tbx/ \
+    && cp -p /snap/s2tbx/s2tbx*/target/*[!tests].jar /build/usr/share/java/calvalus/s2tbx/ \
     # s3tbx
     && mkdir -p /build/usr/share/java/calvalus/s3tbx/ \
-    && cp -p /snap/s3tbx/s3tbx*/target/s*T.jar /build/usr/share/java/calvalus/s3tbx/ \
+    && cp -p /snap/s3tbx/s3tbx*/target/*[!tests].jar /build/usr/share/java/calvalus/s3tbx/ \
     # calmar
     && mkdir -p /build/usr/share/java/calvalus/calmar/ \
     && cp -p /calmar/calmar-processors/calmar-ocean-wind-energy-preprocess/target/calmar-ocean-wind-energy-op-0.1.0-SNAPSHOT.jar /build/usr/share/java/calvalus/calmar/ \
