@@ -14,7 +14,7 @@ RUN set -x \
     && jar xf /calvalus-portal.war \
     && rm /calvalus-portal.war
 
-ADD demo /demo
+ADD config /config
 
 ADD run.sh /
 RUN chmod a+x /run.sh

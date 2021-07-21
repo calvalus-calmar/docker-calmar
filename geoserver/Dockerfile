@@ -18,7 +18,7 @@ RUN set -x \
     && rm -rf /geoserver_tmp \
     && rm -rf /geoserver.war.zip
 
-ADD demo /demo
+ADD config /config
 
 ADD run.sh /
 RUN chmod a+x /run.sh

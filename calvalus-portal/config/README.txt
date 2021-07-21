@@ -1,9 +1,8 @@
-To initialise calvalus-portal with the default configuration, run this 
-command: 
+To initialise calvalus-portal with the demo configuration, run this command:
 
-   bash demo.sh
+  bash config.sh
 
-The demo.sh script runs these configuration scripts:
+The config.sh script runs these configuration scripts:
 
 1) tomcat-config.sh
    setup tomcat user for calvalus-portal
@@ -12,10 +11,10 @@ The demo.sh script runs these configuration scripts:
    configure calvalus-portal
 
 3) calvalus-user-config.sh
-   configure user defined color palettes and regions for calvalus-portal in 
+   configure user defined color palettes and regions for calvalus-portal in
    the user's home directory
 
-After running demo.sh, you must restart the calvalus-portal container for the 
+After running config.sh, you must restart the calvalus-portal container for the
 changes to take effect.
 
 If editing these scripts for a custom configuration, please copy these scripts 
@@ -27,4 +26,4 @@ changes to take effect.
 If using docker-compose, you can connect to the calvalus-portal container 
 using this command:
 
-   docker exec -it calvalus-portal bash
+  docker exec -it calvalus-portal bash

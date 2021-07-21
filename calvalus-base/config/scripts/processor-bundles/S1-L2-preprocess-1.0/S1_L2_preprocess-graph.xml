@@ -1,0 +1,36 @@
+<graph id="s1_graph">
+  <version>1.0</version>
+
+  <header>
+    <source name="input" description="format:SENTINEL-1">${inputPath}</source>
+    <target refid="reProject"/>
+  </header>
+
+  <node id="reSample">
+    <operator>Resample</operator>
+    <sources>
+      <sourceProduct refid="input"/>
+    </sources>
+    <parameters>
+      <referenceBand>vv_001_owiWindSpeed</referenceBand>
+    </parameters>
+  </node>
+
+  <node id="adjustWind">
+    <operator>WindEnergyMapOp</operator>
+    <sources>
+      <sourceProduct refid="reSample"/>
+    </sources>
+  </node>
+
+  <node id="reProject">
+    <operator>Reproject</operator>
+    <sources>
+      <sourceProduct refid="adjustWind"/>
+    </sources>
+    <parameters>
+      <crs>EPSG:4326</crs>
+    </parameters>
+  </node>
+
+</graph>

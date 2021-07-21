@@ -151,7 +151,7 @@ RUN set -x \
 ENV LD_LIBRARY_PATH=/build/usr/lib/
 ENV PATH /build/usr/bin/:$PATH
 
-ADD scripts /scripts
+ADD config /config
 
 ADD entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh

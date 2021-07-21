@@ -1,9 +1,9 @@
-To initialise geoserver with the default configuration and demo data, run this 
-command: 
+To initialise geoserver with the demo configuration and demo data, run this
+command:
 
-   bash demo.sh
+  bash config.sh
 
-After running demo.sh, you must restart the geoserver container for the 
+After running config.sh, you must restart the geoserver container for the
 changes to take effect.
 
 If editing these scripts for a custom configuration, please copy these scripts 
@@ -15,4 +15,4 @@ to take effect.
 If using docker-compose, you can connect to the geoserver container using this 
 command:
 
-   docker exec -it geoserver bash
+  docker exec -it geoserver bash
