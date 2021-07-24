@@ -1,15 +1,15 @@
 <bundleDescriptor>
-  <bundleName>SENTINEL-1 SAR Level-2 OCN preprocess</bundleName>
+  <bundleName>Sentinel-1 SAR Level-2 OCN: preprocess</bundleName>
   <bundleVersion>1.0</bundleVersion>
 
   <processorDescriptors>
     <processorDescriptor>
-    <processorName>S1 L2 preprocess</processorName>
+    <processorName>Sentinel-1 SAR Level-2 OCN: preprocess</processorName>
       <processorVersion>1.0</processorVersion>
-      <executableName>S1_L2_preprocess</executableName>
+      <executableName>S1_L2_OCN_preprocess</executableName>
       <outputFormats>BEAM-DIMAP,GeoTIFF,GeoTIFF-BigTIFF,HDF5,NetCDF4-BEAM,NetCDF4-CF</outputFormats>
-      <inputProductTypes>S1_L2</inputProductTypes>
-      <outputProductType>S1_L2_preprocessed</outputProductType>
+      <inputProductTypes>S1_L2_OCN</inputProductTypes>
+      <outputProductType>S1_L2_OCN_preprocessed</outputProductType>
     </processorDescriptor>
   </processorDescriptors>
 
