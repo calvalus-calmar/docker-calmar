@@ -1,0 +1,16 @@
+<bundleDescriptor>
+  <bundleName>Sentinel-1 SAR Level-1 GRD: terrain correction</bundleName>
+  <bundleVersion>1.0</bundleVersion>
+
+  <processorDescriptors>
+    <processorDescriptor>
+    <processorName>Sentinel-1 SAR Level-1 GRD: terrain correction</processorName>
+      <processorVersion>1.0</processorVersion>
+      <executableName>S1_L1_GRD_Terrain_Correction</executableName>
+      <outputFormats>BEAM-DIMAP,GeoTIFF,GeoTIFF-BigTIFF,HDF5,NetCDF4-BEAM,NetCDF4-CF</outputFormats>
+      <inputProductTypes>S1_L1_GRD</inputProductTypes>
+      <outputProductType>S1_L2_GRD_terrain_corrected</outputProductType>
+    </processorDescriptor>
+  </processorDescriptors>
+
+</bundleDescriptor>
