@@ -135,13 +135,13 @@ RUN set -x \
     && cp -p /snap/snap-engine/snap-python/target/nbm/netbeans/snap/modules/org-esa-snap-snap-python.jar /build/usr/share/java/calvalus/snap-python/ \
     # s1tbx
     && mkdir -p /build/usr/share/java/calvalus/s1tbx/ \
-    && cp -p /snap/s1tbx/s1tbx*/target/*[!tests].jar /build/usr/share/java/calvalus/s1tbx/ \
+    && cp -p `/bin/ls -1 /snap/s1tbx/s1tbx*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/s1tbx/ \
     # s2tbx
     && mkdir -p /build/usr/share/java/calvalus/s2tbx/ \
-    && cp -p /snap/s2tbx/s2tbx*/target/*[!tests].jar /build/usr/share/java/calvalus/s2tbx/ \
+    && cp -p `/bin/ls -1 /snap/s2tbx/s2tbx*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/s2tbx/ \
     # s3tbx
     && mkdir -p /build/usr/share/java/calvalus/s3tbx/ \
-    && cp -p /snap/s3tbx/s3tbx*/target/*[!tests].jar /build/usr/share/java/calvalus/s3tbx/ \
+    && cp -p `/bin/ls -1 /snap/s3tbx/s3tbx*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/s3tbx/ \
     # calmar
     && mkdir -p /build/usr/share/java/calvalus/calmar/ \
     && cp -p /calmar/calmar-processors/calmar-ocean-wind-energy-preprocess/target/calmar-ocean-wind-energy-op-0.1.0-SNAPSHOT.jar /build/usr/share/java/calvalus/calmar/ \
