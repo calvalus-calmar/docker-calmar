@@ -132,7 +132,8 @@ RUN set -x \
     && cp -p /calvalus/calvalus2/calvalus-snap/src/main/resources/bundle-descriptor.xml /build/usr/share/java/calvalus/snap-bundle/resources/ \
     # snap-python
     && mkdir -p /build/usr/share/java/calvalus/snap-python/ \
-    && cp -p /snap/snap-engine/snap-python/target/nbm/netbeans/snap/modules/org-esa-snap-snap-python.jar /build/usr/share/java/calvalus/snap-python/ \
+    && cp -p `/bin/ls -1 /snap/snap-engine/snap-python/target/snap-python*.jar |grep -v "sources" | grep -v "tests"` /build/usr/share/java/calvalus/snap-python/ \
+    && cp -p /snap/snap-engine/snap-python/target/nbm/netbeans/snap/modules/ext/org.esa.snap.snap-python/org-jpy/jpy.jar /build/usr/share/java/calvalus/snap-python/ \
     # s1tbx
     && mkdir -p /build/usr/share/java/calvalus/s1tbx/ \
     && cp -p `/bin/ls -1 /snap/s1tbx/s1tbx*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/s1tbx/ \
