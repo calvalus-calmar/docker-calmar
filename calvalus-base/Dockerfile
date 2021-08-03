@@ -54,67 +54,63 @@ RUN mkdir gdal \
     && cd .. \
     && rm -rf gdal
 
-# Build snap-engine
+# Build Calvalus and its dependencies (SNAP and SANP toolkits)
 RUN set -x \
-    && mkdir snap \
-    && cd snap \
+    && mkdir /snap \
+
+    # Build snap-engine
+    && cd /snap \
     && git clone https://github.com/calvalus-calmar/snap-engine.git \
     && cd snap-engine \
     && git checkout 8.x.calvalus \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Build snap-desktop
-RUN set -x \
-    && cd snap \
+    # Build snap-desktop
+    && cd /snap \
     && git clone https://github.com/calvalus-calmar/snap-desktop.git \
     && cd snap-desktop \
     && git checkout 8.x.calvalus \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Build s1tbx
-RUN set -x \
-    && cd snap \
+    # Build s1tbx
+    && cd /snap \
     && git clone https://github.com/calvalus-calmar/s1tbx.git \
     && cd s1tbx \
     && git checkout 8.x.calvalus \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Build s2tbx
-RUN set -x \
-    && cd snap \
+    # Build s2tbx
+    && cd /snap \
     && git clone https://github.com/calvalus-calmar/s2tbx.git \
     && cd s2tbx \
     && git checkout 8.x.calvalus \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Build s3tbx
-RUN set -x \
-    && cd snap \
+    # Build s3tbx
+    && cd /snap \
     && git clone https://github.com/calvalus-calmar/s3tbx.git \
     && cd s3tbx \
     && git checkout 8.x.calvalus \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Build calvalus
-RUN set -x \
-    && mkdir calvalus \
-    && cd calvalus \
+    # Build calvalus
+    && mkdir /calvalus \
+    && cd /calvalus \
     && git clone https://github.com/calvalus-calmar/calvalus2.git \
     && cd calvalus2 \
     && git checkout calmar-develop \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Build calmar processors
-RUN set -x \
-    && mkdir calmar \
-    && cd calmar \
+    # Build calmar processors
+    && mkdir /calmar \
+    && cd /calmar \
     && git clone https://github.com/calvalus-calmar/calmar-processors.git \
     && cd calmar-processors \
     && git checkout master \
-    && mvn clean install -DskipTests
+    && mvn clean install -DskipTests \
 
-# Prepare install files
-RUN set -x \
+    # Prepare install files
+    && cd / \
     # calvalus-distribution
     && mkdir -p /build/usr/share/java/calvalus/calvalus-distribution/ \
     && cp -p /calvalus/calvalus2/calvalus-distribution/target/cpt.jar /build/usr/share/java/calvalus/calvalus-distribution \
@@ -147,7 +143,8 @@ RUN set -x \
     && mkdir -p /build/usr/share/java/calvalus/calmar/ \
     && cp -p /calmar/calmar-processors/calmar-ocean-wind-energy-preprocess/target/calmar-ocean-wind-energy-op-0.1.0-SNAPSHOT.jar /build/usr/share/java/calvalus/calmar/ \
     # remove build files
-    && rm -rf snap calvalus calmar
+    && rm -rf /snap /calvalus /calmar \
+    && rm -rf ~/.m2
 
 ENV LD_LIBRARY_PATH=/build/usr/lib/
 ENV PATH /build/usr/bin/:$PATH
