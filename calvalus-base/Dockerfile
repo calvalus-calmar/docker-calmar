@@ -54,7 +54,7 @@ RUN mkdir gdal \
     && cd .. \
     && rm -rf gdal
 
-# Build Calvalus and its dependencies (SNAP and SANP toolkits)
+# Build Calvalus and its dependencies (SNAP and SNAP toolkits)
 RUN set -x \
     && mkdir /snap \
 
