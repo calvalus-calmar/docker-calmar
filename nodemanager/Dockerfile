@@ -5,7 +5,7 @@ FROM calvaluscalmar/hadoop-base:master
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q \
     && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-      libproj19 \
+      libproj15 \
     && rm -rf /var/lib/apt/lists/*
 
 # install GDAL to Native Hadoop Library directory
