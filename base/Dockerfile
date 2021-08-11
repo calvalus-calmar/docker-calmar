@@ -1,5 +1,5 @@
 # This script is based on https://github.com/big-data-europe/docker-hadoop
-    FROM ubuntu:20.04
+FROM ubuntu:20.04
 
 RUN apt-get update \
     && DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -q \
