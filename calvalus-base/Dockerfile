@@ -141,7 +141,7 @@ RUN set -x \
     && cp -p `/bin/ls -1 /snap/s3tbx/s3tbx*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/s3tbx/ \
     # calmar
     && mkdir -p /build/usr/share/java/calvalus/calmar/ \
-    && cp -p /calmar/calmar-processors/calmar-ocean-wind-energy-preprocess/target/calmar-ocean-wind-energy-op-0.1.0-SNAPSHOT.jar /build/usr/share/java/calvalus/calmar/ \
+    && cp -p /calmar/calmar-processors/s1-l2-ocn-restructure-geocoding/target/s1-l2-ocn-restructure-geocoding-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
     # remove build files
     && rm -rf /snap /calvalus /calmar \
     && rm -rf ~/.m2

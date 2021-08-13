@@ -16,8 +16,8 @@
     </parameters>
   </node>
 
-  <node id="adjustWind">
-    <operator>WindEnergyMapOp</operator>
+  <node id="fixGeocoding">
+    <operator>Restructure-OCN-Geocoding</operator>
     <sources>
       <sourceProduct refid="reSample"/>
     </sources>
@@ -26,7 +26,7 @@
   <node id="reProject">
     <operator>Reproject</operator>
     <sources>
-      <sourceProduct refid="adjustWind"/>
+      <sourceProduct refid="fixGeocoding"/>
     </sources>
     <parameters>
       <crs>EPSG:4326</crs>
