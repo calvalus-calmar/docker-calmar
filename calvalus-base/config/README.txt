@@ -7,10 +7,13 @@ The config.sh script runs these configuration scripts:
 1) setup_calvalus.sh
    install Calvalus on HDFS
 
-2) setup_snap_color_palettes.sh
+2) setup_processors.sh
+   copy processors to HDFS
+
+3) setup_snap_color_palettes.sh
    copy SNAP color palettes on HDFS
 
-3) setup_user_color_palettes.sh
+4) setup_user_color_palettes.sh
    copy user-defined color palettes on HDFS
 
 After running config.sh, you must restart Docker Hadoop for the changes to
