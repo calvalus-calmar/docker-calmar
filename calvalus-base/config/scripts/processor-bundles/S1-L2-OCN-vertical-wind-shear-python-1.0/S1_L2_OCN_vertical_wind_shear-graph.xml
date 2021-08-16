@@ -1,0 +1,39 @@
+<graph id="s1_graph">
+  <version>1.0</version>
+
+  <header>
+    <source name="input" description="format:SENTINEL-1">${inputPath}</source>
+    <target refid="reProject"/>
+  </header>
+
+  <node id="reSample">
+    <operator>Resample</operator>
+    <sources>
+      <sourceProduct refid="input"/>
+    </sources>
+    <parameters>
+      <referenceBand>vv_001_owiWindSpeed</referenceBand>
+    </parameters>
+  </node>
+
+  <node id="verticalWindShear">
+    <operator>vertical_wind_shear_op</operator>
+    <sources>
+      <sourceProduct refid="reSample"/>
+    </sources>
+    <parameters>
+      <windHeight>100.0</windHeight>
+    </parameters>
+  </node>
+
+  <node id="reProject">
+    <operator>Reproject</operator>
+    <sources>
+      <sourceProduct refid="verticalWindShear"/>
+    </sources>
+    <parameters>
+      <crs>EPSG:4326</crs>
+    </parameters>
+  </node>
+
+</graph>

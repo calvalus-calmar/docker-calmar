@@ -1,0 +1,16 @@
+<bundleDescriptor>
+  <bundleName>Sentinel-1 SAR Level-2 OCN: adjust wind height (Java version)</bundleName>
+  <bundleVersion>1.0</bundleVersion>
+
+  <processorDescriptors>
+    <processorDescriptor>
+      <processorName>Sentinel-1 SAR Level-2 OCN: adjust wind height (Java version)</processorName>
+      <processorVersion>1.0</processorVersion>
+      <executableName>S1_L2_OCN_vertical_wind_shear</executableName>
+      <outputFormats>BEAM-DIMAP,GeoTIFF,GeoTIFF-BigTIFF,HDF5,NetCDF4-BEAM,NetCDF4-CF</outputFormats>
+      <inputProductTypes>S1_L2_OCN</inputProductTypes>
+      <outputProductType>S1_L2_OCN_adjusted</outputProductType>
+    </processorDescriptor>
+  </processorDescriptors>
+
+</bundleDescriptor>
