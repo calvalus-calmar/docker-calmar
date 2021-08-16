@@ -17,7 +17,7 @@
   </node>
 
   <node id="fixGeocoding">
-    <operator>Restructure-OCN-Geocoding</operator>
+    <operator>OCN-Restructure-Geocoding</operator>
     <sources>
       <sourceProduct refid="reSample"/>
     </sources>
