@@ -1,8 +1,6 @@
 
 # Calvalus / CalMar on Hadoop Docker
 
-***
-
 ## Background
 
 The [CalMar project](https://github.com/calvalus-calmar "CalMar project") builds on the [Calvalus](https://github.com/bcdev/calvalus2 "Calvalus") and 
