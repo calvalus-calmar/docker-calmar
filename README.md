@@ -112,7 +112,7 @@ After running the configuration script you need to restart the `calvalus-portal`
 docker-compose restart calvalus-portal
 ```
 
-Note that the default Tomcat username and password is root and demo*. These can be changed by editing the
+Note that the default Tomcat username and password is root and calmar. These can be changed by editing the
 `/opt/tomcat/conf/tomcat-users.xml` file within the `calvalus-portal` container. You must also restart the `calvalus-portal`
 container for these changes to take effect.
 

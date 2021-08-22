@@ -13,6 +13,6 @@ if ! grep -q "${comment}" $tomcatUsersFile; then
   \  $comment\n\
   <role rolename=\"calvalus\"/>\n\
   <role rolename=\"bc\"/>\n\
-  <user username=\"root\" password=\"demo*\" roles=\"calvalus,bc\"/>" \
+  <user username=\"root\" password=\"calmar\" roles=\"calvalus,bc\"/>" \
   $tomcatUsersFile
 fi
