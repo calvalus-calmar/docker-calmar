@@ -62,21 +62,21 @@ RUN set -x \
     && cd /snap \
     && git clone https://github.com/calvalus-calmar/snap-engine.git \
     && cd snap-engine \
-    && git checkout 8.x.calvalus \
+    && git checkout calmar-develop \
     && mvn clean install -DskipTests \
 
     # Build snap-desktop
     && cd /snap \
     && git clone https://github.com/calvalus-calmar/snap-desktop.git \
     && cd snap-desktop \
-    && git checkout 8.x.calvalus \
+    && git checkout calmar-develop \
     && mvn clean install -DskipTests \
 
     # Build s1tbx
     && cd /snap \
     && git clone https://github.com/calvalus-calmar/s1tbx.git \
     && cd s1tbx \
-    && git checkout 8.x.calvalus \
+    && git checkout calmar-develop \
     && mvn clean install -DskipTests \
 
     # Build s2tbx

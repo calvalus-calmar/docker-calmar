@@ -12,12 +12,12 @@ java -jar calvalus/calvalus-distribution/cpt.jar -e --deploy calvalus/calvalus-b
 hdfs dfs -copyFromLocal -f gdal.jar /calvalus/software/1.0/calvalus-2.22
 
 # install snap-bundle
-java -jar calvalus/calvalus-distribution/cpt.jar -e --deploy calvalus/snap-bundle/snap-all.jar snap-8.0.3.4cv
+java -jar calvalus/calvalus-distribution/cpt.jar -e --deploy calvalus/snap-bundle/snap-all.jar snap-8.0.3.6cv
 
 # install snap-python
-hdfs dfs -copyFromLocal -f calvalus/snap-python/*.jar /calvalus/software/1.0/snap-8.0.3.4cv
+hdfs dfs -copyFromLocal -f calvalus/snap-python/*.jar /calvalus/software/1.0/snap-8.0.3.6cv
 
 # add snap built-in bundle descriptor
-hdfs dfs -copyFromLocal -f calvalus/snap-bundle/resources/bundle-descriptor.xml /calvalus/software/1.0/snap-8.0.3.4cv
+hdfs dfs -copyFromLocal -f calvalus/snap-bundle/resources/bundle-descriptor.xml /calvalus/software/1.0/snap-8.0.3.6cv
 
 echo "Finished installing Calvalus on HDFS"
