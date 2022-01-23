@@ -62,21 +62,21 @@ RUN set -x \
     && cd /snap \
     && git clone https://github.com/calvalus-calmar/snap-engine.git \
     && cd snap-engine \
-    && git checkout calmar-develop \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests \
 
     # Build snap-desktop
     && cd /snap \
     && git clone https://github.com/calvalus-calmar/snap-desktop.git \
     && cd snap-desktop \
-    && git checkout calmar-develop \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests \
 
     # Build s1tbx
     && cd /snap \
     && git clone https://github.com/calvalus-calmar/s1tbx.git \
     && cd s1tbx \
-    && git checkout calmar-develop \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests \
 
     # Build s2tbx
@@ -93,6 +93,13 @@ RUN set -x \
     && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests \
 
+    # Build probavbox
+    && cd /snap \
+    && git clone https://github.com/calvalus-calmar/probavbox.git \
+    && cd probavbox \
+    && git checkout 8.x.calvalus \
+    && mvn clean install -DskipTests \
+
     # Build calvalus
     && mkdir /calvalus \
     && cd /calvalus \
@@ -106,7 +113,7 @@ RUN set -x \
     && cd /calmar \
     && git clone https://github.com/calvalus-calmar/calmar-processors.git \
     && cd calmar-processors \
-    && git checkout master \
+    && git checkout 8.x.calvalus \
     && mvn clean install -DskipTests \
 
     # Prepare install files
@@ -139,6 +146,10 @@ RUN set -x \
     # s3tbx
     && mkdir -p /build/usr/share/java/calvalus/s3tbx/ \
     && cp -p `/bin/ls -1 /snap/s3tbx/s3tbx*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/s3tbx/ \
+    # probavbox
+    && mkdir -p /build/usr/share/java/calvalus/probavbox/ \
+    && cp -p /snap/probavbox/probavbox-reader/target/nbm/netbeans/probavbox/modules/ext/org.vito.probavbox.probavbox-reader/ncsa-hdf/*.jar /build/usr/share/java/calvalus/probavbox/ \
+    && cp -p `/bin/ls -1 /snap/probavbox/probavbox*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/probavbox/ \
     # calmar
     && mkdir -p /build/usr/share/java/calvalus/calmar/ \
     && cp -p /calmar/calmar-processors/s1-l2-ocn-restructure-geocoding-op/target/s1-l2-ocn-restructure-geocoding-op-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
