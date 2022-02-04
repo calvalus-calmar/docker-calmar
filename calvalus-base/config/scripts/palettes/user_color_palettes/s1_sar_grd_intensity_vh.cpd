@@ -1,0 +1,10 @@
+#BEAM Colour Palette Definition File
+#Mon Jan 31 12:20:29 GMT 2022
+autoDistribute=false
+color0=0,0,0
+color1=128,128,128
+color2=255,255,255
+numPoints=3
+sample0=1.0
+sample1=8728.75
+sample2=17456.5
