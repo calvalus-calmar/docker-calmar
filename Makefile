@@ -2,7 +2,7 @@ DOCKER_NETWORK = docker-calmar_default
 ENV_FILE = hadoop.env
 current_branch := $(shell git rev-parse --abbrev-ref HEAD)
 build:
-	docker build -t calvaluscalmar/hadoop-base:$(current_branch) ./base
+	docker build -t calvaluscalmar/hadoop-base:$(current_branch) ./hadoop-base
 	docker build -t calvaluscalmar/calvalus-base:$(current_branch) ./calvalus-base
 	docker build -t calvaluscalmar/tomcat-base:$(current_branch) ./tomcat-base
 	docker build -t calvaluscalmar/hadoop-namenode:$(current_branch) ./namenode
