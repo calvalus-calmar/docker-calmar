@@ -153,9 +153,9 @@ RUN set -x \
     && cp -p `/bin/ls -1 /snap/probavbox/probavbox*/target/*.jar |grep -v "tests" | grep -v "sources"` /build/usr/share/java/calvalus/probavbox/ \
     # calmar
     && mkdir -p /build/usr/share/java/calvalus/calmar/ \
-    && cp -p /calmar/calmar-processors/s1-l2-ocn-restructure-geocoding-op/target/s1-l2-ocn-restructure-geocoding-op-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
-    && cp -p /calmar/calmar-processors/s1-l2-ocn-vertical-wind-shear-op-java/target/s1-l2-ocn-vertical-wind-shear-op-java-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
-    && cp -p /calmar/calmar-processors/s1-l2-ocn-vertical-wind-shear-op-python/target/s1-l2-ocn-vertical-wind-shear-op-python-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
+    && cp -p /calmar/calmar-processors/s1-sar-ocn-restructure-geocoding-op/target/s1-sar-ocn-restructure-geocoding-op-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
+    && cp -p /calmar/calmar-processors/s1-sar-ocn-vertical-wind-shear-op-java/target/s1-sar-ocn-vertical-wind-shear-op-java-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
+    && cp -p /calmar/calmar-processors/s1-sar-ocn-vertical-wind-shear-op-python/target/s1-sar-ocn-vertical-wind-shear-op-python-0.1.0.jar /build/usr/share/java/calvalus/calmar/ \
     # remove build files
     && rm -rf /snap /calvalus /calmar \
     && rm -rf ~/.m2
